@@ -1,5 +1,8 @@
 import time
 import pygame
+import threading
+import os
+import keyboard
 
 def player():
     pygame.init()
@@ -15,10 +18,21 @@ def myTimer(tempo):
         minutos = int(x / 60) % 60
         print(f'{minutos:02}:{segundos:02}', end="\r")
         time.sleep(1)
-for x in range(4):
-    print('TRABALHO')
-    myTimer(1500)
-    print('Pausa Curta')
-    myTimer(300)
-print('Pausa longa')
-myTimer(900)
+
+def executaRepeticao():
+    while True:
+        for x in range(4):
+            print('TRABALHO ----- TECLE ESPAÇO PARA PARAR')
+            myTimer(1500)
+            print('Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
+            myTimer(500)
+        print('Pausa longa ----- TECLE ESPAÇO PARA PARAR')
+        myTimer(900)
+
+def paraRepeticao():
+    while True:
+        if keyboard.is_pressed(' '): 
+            os._exit(0)
+     
+threading.Thread(target=executaRepeticao).start() 
+threading.Thread(target=paraRepeticao).start() 
