@@ -24,15 +24,16 @@ def executorDePomodoros():
         while True:
             for x in range(4):
                 print('\n    TRABALHO ----- TECLE ESPAÇO PARA PARAR')
-                myTimer(15)
+                myTimer(1500)
                 contador_de_Pomodoro += 1
-                print (f'\n                  POMODORO --> {contador_de_Pomodoro}')
+                print (' '*50,'         \|/')
+                print (' '*50,f'       (_____) POMODOROS FEITOS --> {contador_de_Pomodoro}\n')
                 print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
-                myTimer(5)
+                myTimer(300) 
             print('\n    Pausa longa ----- TECLE ESPAÇO PARA PARAR')
-            myTimer(9)
+            myTimer(600)
 
-def executaRepeticao():
+def executaRepeticao(): 
     global contador_de_Pomodoro
     if  contador_de_Pomodoro == 0:
         opcao=int(input('\nTECLE:\n1- PARA INICIAR O TRABALHO\n2- PARA INICIAR COM UMA PAUSA CURTA\n3- PARA INICIAR COM UMA PAUSA LONGA\n----> '))
