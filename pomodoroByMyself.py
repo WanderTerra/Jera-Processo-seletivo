@@ -13,26 +13,49 @@ def player():
 def myTimer(tempo):
     t=tempo
     player()
-    for x in range(t,0,-1):
+    for x in range(t,-1,-1):
         segundos = x % 60
         minutos = int(x / 60) % 60
-        print(f'{minutos:02}:{segundos:02}', end="\r")
+        print(f'      {minutos:02}:{segundos:02}', end="\r")
         time.sleep(1)
 
+def executorDePomodoros():
+        global contador_de_Pomodoro
+        while True:
+            for x in range(4):
+                print('\n    TRABALHO ----- TECLE ESPAÇO PARA PARAR')
+                myTimer(15)
+                contador_de_Pomodoro += 1
+                print (f'\n                  POMODORO --> {contador_de_Pomodoro}')
+                print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
+                myTimer(5)
+            print('\n    Pausa longa ----- TECLE ESPAÇO PARA PARAR')
+            myTimer(9)
+
 def executaRepeticao():
-    while True:
-        for x in range(4):
-            print('TRABALHO ----- TECLE ESPAÇO PARA PARAR')
-            myTimer(1500)
-            print('Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
-            myTimer(500)
-        print('Pausa longa ----- TECLE ESPAÇO PARA PARAR')
-        myTimer(900)
+    global contador_de_Pomodoro
+    if  contador_de_Pomodoro == 0:
+        opcao=int(input('\nTECLE:\n1- PARA INICIAR O TRABALHO\n2- PARA INICIAR COM UMA PAUSA CURTA\n3- PARA INICIAR COM UMA PAUSA LONGA\n----> '))
+        if opcao == 1:
+            executorDePomodoros()
+        elif opcao == 2:
+            print('\n    Pausa Curta')
+            myTimer(3)
+            executorDePomodoros()
+        elif opcao == 3:
+            print('\n    Pausa longa')
+            myTimer(9)
+            executorDePomodoros()
+
+    
 
 def paraRepeticao():
-    while True:
+    while True:     
         if keyboard.is_pressed(' '): 
-            os._exit(0)
-     
+           os._exit(0)
+
+contador_de_Pomodoro = 0
+
+
 threading.Thread(target=executaRepeticao).start() 
-threading.Thread(target=paraRepeticao).start() 
+threading.Thread(target=paraRepeticao).start()
