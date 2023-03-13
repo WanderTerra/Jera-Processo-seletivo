@@ -37,8 +37,8 @@ def executorDePomodoros():
                         executorDePomodoros()
                     elif opcao == 2:
                         continue
-            print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
-            myTimer(300) 
+                print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
+                myTimer(300) 
             
             
 
