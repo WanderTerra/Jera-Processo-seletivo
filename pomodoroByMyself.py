@@ -28,10 +28,19 @@ def executorDePomodoros():
                 contador_de_Pomodoro += 1
                 print (' '*50,'         \|/')
                 print (' '*50,f'       (_____) POMODOROS FEITOS --> {contador_de_Pomodoro}\n')
-                print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
-                myTimer(300) 
-            print('\n    Pausa longa ----- TECLE ESPAÇO PARA PARAR')
-            myTimer(600)
+                if (contador_de_Pomodoro % 4) == 0:
+                    print(f'VocÊ fez {contador_de_Pomodoro} pomodoros. Deseja fazer uma pausa longa?')
+                    opcao=int(input('Se sim --> digite 1\nSe não --> digite 2\n---> '))
+                    if opcao == 1:
+                        print('\n    Pausa longa ----- TECLE ESPAÇO PARA PARAR')
+                        myTimer(600)
+                        executorDePomodoros()
+                    elif opcao == 2:
+                        continue
+            print('\n    Pausa Curta ----- TECLE ESPAÇO PARA PARAR')
+            myTimer(300) 
+            
+            
 
 def executaRepeticao(): 
     global contador_de_Pomodoro
