@@ -41,11 +41,11 @@ def executaRepeticao():
             executorDePomodoros()
         elif opcao == 2:
             print('\n    Pausa Curta')
-            myTimer(3)
+            myTimer(300)
             executorDePomodoros()
         elif opcao == 3:
             print('\n    Pausa longa')
-            myTimer(9)
+            myTimer(600)
             executorDePomodoros()
 
     
